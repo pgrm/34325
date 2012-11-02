@@ -13,10 +13,10 @@
 #include <string.h>
 #include <time.h>
 
-#define BUCKET_SIZE 70
+#define BUCKET_SIZE 50
 #define MAX_ITEM_SIZE 25
 #define MAX_ITEM_VALUE 10
-#define ITEM_COUNT 9
+#define ITEM_COUNT 20
 
 typedef struct
 {
@@ -95,11 +95,9 @@ OptimumRet* findOptimum(ItemStruct* items,
 		freeRet = with;
 	}
 
-	/*
 	if (freeRet->selection != selection)
 		free(freeRet->selection);
 	free(freeRet);
-	*/
 
 	return useRet;
 }
@@ -116,7 +114,7 @@ OptimumRet* findOptimumWithCurrentItem(ItemStruct* items,
 		return calculateValue(items, selection, selectedItemsCount);
 	else
 	{
-		newSelection = malloc(sizeof(char)*(selectedItemsCount + 1));
+		newSelection = malloc(sizeof(int)*(selectedItemsCount + 1));
 
 		memcpy(newSelection, selection, selectedItemsCount * sizeof(int));
 		newSelection[selectedItemsCount] = curItem;
